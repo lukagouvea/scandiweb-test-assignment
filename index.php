@@ -1,5 +1,7 @@
 <?php
-    include './conn.php'
+    include './conn.php';
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -85,14 +87,16 @@
         
         <script>
             function verifyCheckbox() {
-            var checkboxes = document.getElementsByClassName('delete-checkbox');
-            for (var i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i].checked) {
-                return true; //at least one checkbox checked
+                var checkboxes = document.getElementsByClassName('delete-checkbox');
+
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked) {
+                    return true; //at least one checkbox checked
+                    }
                 }
-            }
-            alert("Selecione pelo menos uma opção para excluir."); // nenhuma checkbox marcada, mostrar mensagem de erro
-            return false; // impedir o envio do formulário
+                
+                alert("Select at least one optin to delete"); // nenhuma checkbox marcada, mostrar mensagem de erro
+                return false; // impedir o envio do formulário
             }
         </script>
         

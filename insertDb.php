@@ -18,11 +18,26 @@
             
         }
     }else{
-        echo "<!DOCTYPE html>
+
+            $mensagem = "SKU must be unique";
+            header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));
+            exit();
+
+        
+    }
+    
+
+
+?>
+
+
+<!--
+"<!DOCTYPE html>
         <html>
         <head>
             <title>SKU field must be unique</title>
             <script>
+            alert
                 setTimeout(function() {
                     window.location.href = 'add-product.php';
                 }, 5000);
@@ -33,9 +48,5 @@
             <p>Redirecting to Product Add page.</p>
         </body>
         </html>";
-        
-    }
-    
 
-
-?>
+-->

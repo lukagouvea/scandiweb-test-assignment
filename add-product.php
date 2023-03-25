@@ -175,6 +175,13 @@
 
         </form>
 
+        <?php
+            if (isset($_GET['mensagem'])) {
+                
+                echo "<script>window.onload = function() {alert('" . $_GET['mensagem'] . "')}</script>";
+            }
+        ?> 
+
 
 
 
