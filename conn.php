@@ -1,5 +1,3 @@
-
-
 <?php
     define('HOST', 'localhost');
     DEFINE('USUARIO', 'root');
