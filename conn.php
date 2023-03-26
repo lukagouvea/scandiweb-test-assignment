@@ -43,6 +43,10 @@
          * @param mixed $post
          * @return void
          */
+        /**
+         * It takes a POST array and sets the object's properties to the values in the POST array
+         * 
+         */
         public function setInfoPOST($post){
             $this->setSKU($post['SKU']);
             $this->setName($post['name']);
@@ -53,6 +57,9 @@
          * Summary of validInfo
          * @param mixed $conexao
          * @return bool
+         */
+        /**
+         * It checks if the SKU is already in the database.
          */
         public function validInfo($conexao){
 
@@ -79,16 +86,6 @@
         }
 
         
-
-
-        /**
-         * Summary of insertInfoQuery
-         * @return void
-         */
-        public function insertInfoQuery(){
-            
-        }
-
 
 
 
