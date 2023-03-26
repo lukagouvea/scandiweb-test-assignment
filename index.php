@@ -66,29 +66,12 @@
             
             <?php
 
-                /* Selecting all the data from the table tblProduct and ordering it 
-                by the idProduct. */
-                $query = "SELECT * FROM tblproduct ORDER BY idProduct";
-
-
-                /* Executing the query and storing the result in the variable . */
-                $result = $conexao->query($query);
+                $product = new ConcreteProduct();
+                    
+                $data = $product->selectAll($conexao);
                 
-                /* Checking if the query returned any results. */
-                if ($result->num_rows > 0) {
-                    
-                    /* Fetching the results from the database and rendering them
-                     on the page. */
-                    while ($row = $result->fetch_assoc()) {
-                        
-                        $newProduct = new $row['type'];
-                        $newProduct->setInfo($row);
-                        $newProduct->renderInfo();
-                        
-                    }
-                    
-
-                    $conexao->close();
+                foreach ($data as $data){
+                    $data->renderInfo();
                 }
                 
 

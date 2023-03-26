@@ -95,6 +95,17 @@
                 
             }
         }
+
+
+
+
+
+
+
+        
+
+
+
   
 
 
@@ -204,6 +215,26 @@
                 return $this;
             }
         }
+    }
+
+    class ConcreteProduct extends Product {
+
+        public function selectAll($conexao) {
+            $sql = "SELECT * FROM tblproduct ORDER BY idProduct";
+            $result = $conexao->query($sql);
+
+            $data = array();
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    $obj = new $row["type"];
+                    $obj->setInfo($row);
+                    $data[] = $obj;
+                }
+            }
+
+            return $data;
+        }
+
     }
 
     
