@@ -33,7 +33,7 @@
          */
         public function setInfo($info){
             $this->setIdProduct($info['idProduct']);
-            $this->setSKU($info['sku']);
+            $this->setSKU($info['SKU']);
             $this->setName($info['name']);
             $this->setPrice($info['price']);
         }
