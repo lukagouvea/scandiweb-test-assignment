@@ -32,8 +32,15 @@
          * 
          */
         public function setInfo($info){
-            $this->setIdProduct($info['idProduct']);
-            $this->setSKU($info['SKU']);
+            if(isset($info['idProduct'])){
+                $this->setIdProduct($info['idProduct']);
+            }
+            if(isset($info['SKU'])){
+                $this->setSKU($info['SKU']);
+            } else if(isset($info['sku'])){
+                $this->setSKU($info['sku']);
+            }
+
             $this->setName($info['name']);
             $this->setPrice($info['price']);
         }
@@ -47,12 +54,7 @@
          * It takes a POST array and sets the object's properties to the values in the POST array
          * 
          */
-        public function setInfoPOST($post){
-            $this->setSKU($post['SKU']);
-            $this->setName($post['name']);
-            $this->setPrice($post['price']);
-        }
-
+        
         /**
          * Summary of validInfo
          * @param mixed $conexao
@@ -202,15 +204,7 @@
             $this->setSize($info['size']);
         }
 
-        /**
-         * It takes the post data from the form and sets the size of the object
-         * 
-         * 
-         */
-        public function setInfoPOST($post){
-            parent::setInfoPOST($post);
-            $this->setSize($post['size']);
-        }
+        
         
         /**
          * Summary of renderInfo
@@ -250,12 +244,20 @@
          * 
          *
          */
-        public function insertInfoQuery(){
+        public function insertInfoQuery($conexao){
             
             $query = "INSERT INTO tblproduct (SKU, name, price, size, type) VALUES ('".
                 $this->getSKU()."', '".$this->getName()."', '"
                 .$this->getPrice()."', '".$this->getSize()."', 'dvd')";
-            return $query;
+
+            if ($conexao->query($query) === TRUE) {
+                header('Location: ./index.php');
+                exit();
+            } else {
+                echo "ERROR: " . $conexao;
+                
+            }
+            
         }
 
         
@@ -300,21 +302,7 @@
             $this->setWeight($info['weight']);
         }
 
-        /**
-         * The function sets the weight of the object to the value of the weight key in the post array
-         * 
-         * 
-         */
-        /**
-         * The function setInfoPOST() is a function that takes in a post variable and sets the
-         * information of the parent class and the weight of the child class
-         * 
-         * 
-         */
-        public function setInfoPOST($post){
-            parent::setInfoPOST($post);
-            $this->setWeight($post['weight']);
-        }
+        
 
         /**
          * Summary of renderInfo
@@ -348,21 +336,28 @@
 
         /**
          * Summary of insertInfoQuery
-         * @return string
+         * @return void
          */
         /**
          * It takes the values from the object and return a SQL query to insert into DB.
          * 
          * 
          */
-        public function insertInfoQuery(){
+        public function insertInfoQuery($conexao){
             
             $query = "INSERT INTO tblproduct (SKU, name, price, weight, type) VALUES ('"
             .$this->getSKU()."', '".$this->getName()."', '"
             .$this->getPrice()."', '".$this->getWeight()."', 'book')";
             
+            if ($conexao->query($query) === TRUE) {
+                header('Location: ./index.php');
+                exit();
+            } else {
+                echo "ERROR: " . $conexao;
+                
+            }
             
-            return $query;
+            
         }
         
         /**
@@ -408,22 +403,6 @@
             $this->setWidth($info['width']);
         }
 
-        /**
-         * Summary of setInfoPOST
-         * @param mixed $post
-         * @return void
-         */
-        /**
-         * The function sets the height, length, and width of the object.
-         * 
-         * 
-         */
-        public function setInfoPOST($post){
-            parent::setInfoPOST($post);
-            $this->setHeight($post['height']);
-            $this->setLength($post['length']);
-            $this->setWidth($post['width']);
-        }
         
         /**
          * Summary of renderInfo
@@ -453,9 +432,9 @@
 
         /**
          * Summary of insertInfoQuery
-         * @return string
+         * @return void
          */
-        public function insertInfoQuery(){
+        public function insertInfoQuery($conexao){
             
             $query = "INSERT INTO tblproduct 
             (SKU, name, price, height, width, length, type) VALUES 
@@ -463,7 +442,15 @@
             .$this->getPrice()."', '".$this->getHeight()."', '"
             .$this->getWidth()."', '".$this->getLength()."', 'furniture')";
 
-            return $query;
+            if ($conexao->query($query) === TRUE) {
+                header('Location: ./index.php');
+                exit();
+            } else {
+                echo "ERROR: " . $conexao;
+                
+            }
+
+
             
         }
         

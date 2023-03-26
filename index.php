@@ -95,8 +95,8 @@
                     }
                 }
 
-                alert("Select at least one option to delete"); // nenhuma checkbox marcada, mostrar mensagem de erro
-                return false; // impedir o envio do formulário
+                alert("Select at least one option to delete"); // no checkboxes checked
+                return false; 
             }
         </script>
         

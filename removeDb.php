@@ -1,9 +1,6 @@
 <?php
     include './conn.php';
-    
-    
-    
-    
+
 
     $id_type_selected = $_POST['product_id_type'];
     var_dump($id_type_selected);
