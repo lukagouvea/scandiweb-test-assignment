@@ -23,11 +23,11 @@
             margin: 5px;
         }
         .delete-checkbox{
-            z-index: 0;
-            text-align: left;
             
-            left: -50%;
-            top: -15px;
+            text-align: left;
+            height: 15px;
+            width: 15px;
+            
         }
         #chkbx{
             position: relative;
