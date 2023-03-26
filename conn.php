@@ -5,9 +5,7 @@
     define('DB', 'product');
     
     $conexao = new mysqli(HOST, USUARIO, PASSWORD, DB);
-
-
-    
+ 
     /**
      * Summary of Product
      */
