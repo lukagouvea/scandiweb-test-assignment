@@ -6,9 +6,9 @@
     $newproduct->setInfo($_POST);
 
     /* Checking if the SKU is unique, if it is, it will insert the product into the database. */
-    if($newproduct->validInfo($conexao)){
+    if($newproduct->validSKU($conexao)){
         
-        $newproduct->insertInfoQuery($conexao);
+        $newproduct->insertInfo($conexao);
 
         
     }else{

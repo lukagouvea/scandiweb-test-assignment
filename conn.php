@@ -45,25 +45,17 @@
             $this->setPrice($info['price']);
         }
 
-        /**
-         * Summary of setInfoPOST
-         * @param mixed $post
-         * @return void
-         */
-        /**
-         * It takes a POST array and sets the object's properties to the values in the POST array
-         * 
-         */
+        
         
         /**
-         * Summary of validInfo
+         * Summary of validSKU
          * @param mixed $conexao
          * @return bool
          */
         /**
          * It checks if the SKU is already in the database.
          */
-        public function validInfo($conexao){
+        public function validSKU($conexao){
 
             /* Checking if the SKU is empty. */
             $valor = $this->getSKU();
@@ -244,7 +236,7 @@
          * 
          *
          */
-        public function insertInfoQuery($conexao){
+        public function insertInfo($conexao){
             
             $query = "INSERT INTO tblproduct (SKU, name, price, size, type) VALUES ('".
                 $this->getSKU()."', '".$this->getName()."', '"
@@ -343,7 +335,7 @@
          * 
          * 
          */
-        public function insertInfoQuery($conexao){
+        public function insertInfo($conexao){
             
             $query = "INSERT INTO tblproduct (SKU, name, price, weight, type) VALUES ('"
             .$this->getSKU()."', '".$this->getName()."', '"
@@ -434,7 +426,7 @@
          * Summary of insertInfoQuery
          * @return void
          */
-        public function insertInfoQuery($conexao){
+        public function insertInfo($conexao){
             
             $query = "INSERT INTO tblproduct 
             (SKU, name, price, height, width, length, type) VALUES 
