@@ -26,14 +26,15 @@
 
             padding-bottom: 30px;
             margin: 5px;
+            border: 1px solid #333;
         }
         .delete-checkbox{
-            
-            text-align: left;
             height: 15px;
-            width: 15px;
+            width: 15px; 
+            
             
         }
+        
         #chkbx{
             position: relative;
             float: left;
