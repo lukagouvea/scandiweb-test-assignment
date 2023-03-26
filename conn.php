@@ -1,8 +1,8 @@
 <?php
-    define('HOST', 'localhost');
+    DEFINE('HOST', 'localhost');
     DEFINE('USUARIO', 'root');
-    define('PASSWORD', '');
-    define('DB', 'product');
+    DEFINE('PASSWORD', '');
+    DEFINE('DB', 'product');
     
     $conexao = new mysqli(HOST, USUARIO, PASSWORD, DB);
  

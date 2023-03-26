@@ -50,8 +50,6 @@
 	
 	<main>
 
-
-
         <!-- This is the form that the user will fill out to add a product to the database. 
         The form is divided into two parts. The first part is the form that is common to 
         all products. The second part is the form that is specific to the product type. 
