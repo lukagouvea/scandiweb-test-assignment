@@ -70,7 +70,7 @@
                     
                 $products = $product->selectAll($conexao);
                 
-                foreach ($produts as $product){
+                foreach ($products as $product){
                     $product->renderInfo();
                 }
                 
