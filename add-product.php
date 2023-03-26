@@ -29,6 +29,7 @@
             width: 300px;
             padding: 15px;
             padding-bottom: 0;
+            border-radius: 5px;
 
         }
         #size, #weight, #height, #width, #length{
