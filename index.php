@@ -3,7 +3,8 @@
 
     if (isset($_GET['mensagem'])) {
         
-        echo "<script>window.onload = function() {alert('" . $_GET['mensagem'] . "')}</script>";
+        echo "<script>window.onload = function() {alert('" . $_GET['mensagem'] . "')}
+              </script>";
     }
     
 ?>
@@ -15,7 +16,7 @@
 	<link rel="stylesheet" href="style.css">
     <style>
         
-        
+
         #deleteform{
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -48,7 +49,9 @@
 	<header>
 		<h1>Product List</h1>
 		<div>
-			<button value="ADD" onclick="window.location.href='./add-product.php';">ADD</button>
+			<button value="ADD" onclick="window.location.href='./add-product.php';">
+                ADD
+            </button>
 			<button value="MASS DELETE" type="submit" 
             form="deleteform" id="delete-product-btn" onclick="return verifyCheckbox()">
                 MASS DELETE
@@ -62,7 +65,8 @@
             
             <?php
 
-                /* Selecting all the data from the table tblProduct and ordering it by the idProduct. */
+                /* Selecting all the data from the table tblProduct and ordering it 
+                by the idProduct. */
                 $query = "SELECT * FROM tblproduct ORDER BY idProduct";
 
 
@@ -72,7 +76,8 @@
                 /* Checking if the query returned any results. */
                 if ($result->num_rows > 0) {
                     
-                    /* Fetching the results from the database and rendering them on the page. */
+                    /* Fetching the results from the database and rendering them
+                     on the page. */
                     while ($row = $result->fetch_assoc()) {
                         
                         $newProduct = new $row['type'];

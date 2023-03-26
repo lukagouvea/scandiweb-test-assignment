@@ -259,8 +259,8 @@
          */
         public function insertInfo($conexao){
             
-            $query = "INSERT INTO tblproduct (SKU, name, price, size, type) VALUES ('".
-                $this->getSKU()."', '".$this->getName()."', '"
+            $query = "INSERT INTO tblproduct (SKU, name, price, size, type) VALUES 
+            ('". $this->getSKU()."', '".$this->getName()."', '"
                 .$this->getPrice()."', '".$this->getSize()."', 'dvd')";
 
             if ($conexao->query($query) === TRUE) {
@@ -358,8 +358,8 @@
          */
         public function insertInfo($conexao){
             
-            $query = "INSERT INTO tblproduct (SKU, name, price, weight, type) VALUES ('"
-            .$this->getSKU()."', '".$this->getName()."', '"
+            $query = "INSERT INTO tblproduct (SKU, name, price, weight, type) VALUES 
+            ('".$this->getSKU()."', '".$this->getName()."', '"
             .$this->getPrice()."', '".$this->getWeight()."', 'book')";
             
             if ($conexao->query($query) === TRUE) {

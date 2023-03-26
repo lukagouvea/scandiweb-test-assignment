@@ -1,7 +1,8 @@
 <?php
     if (isset($_GET['mensagem'])) {
         
-        echo "<script>window.onload = function() {alert('" . $_GET['mensagem'] . "')}</script>";
+        echo "<script>window.onload = function() {alert('" . $_GET['mensagem'] . "')}
+              </script>";
     }
 ?> 
 
@@ -118,8 +119,8 @@
 
 
             <!--
-             * The function is called when the user changes the value of the dropdown menu. The
-             * function then checks the value of the dropdown menu and displays the appropriate form.
+             * The function is called when the user changes the value of the dropdown menu. 
+             *The function then checks the value of the dropdown menu and displays the appropriate form.
              */-->
             <script type="text/javascript">
                 document.getElementById("productType").
