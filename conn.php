@@ -96,19 +96,6 @@
             }
         }
 
-
-
-
-
-
-
-        
-
-
-
-  
-
-
         /**
          * @return mixed
          */
@@ -217,8 +204,18 @@
         }
     }
 
+
+
+    /**
+     * Summary of ConcreteProduct
+     */
     class ConcreteProduct extends Product {
 
+        /**
+         * Summary of selectAll
+         * @param mixed $conexao
+         * @return array<object>
+         */
         public function selectAll($conexao) {
             $sql = "SELECT * FROM tblproduct ORDER BY idProduct";
             $result = $conexao->query($sql);
@@ -236,6 +233,8 @@
         }
 
     }
+
+
 
     
     /**

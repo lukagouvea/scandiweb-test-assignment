@@ -68,10 +68,10 @@
 
                 $product = new ConcreteProduct();
                     
-                $data = $product->selectAll($conexao);
+                $products = $product->selectAll($conexao);
                 
-                foreach ($data as $data){
-                    $data->renderInfo();
+                foreach ($produts as $product){
+                    $product->renderInfo();
                 }
                 
 
@@ -84,7 +84,7 @@
 
                 for (var i = 0; i < checkboxes.length; i++) {
                     if (checkboxes[i].checked) {
-                    return true; //at least one checkbox checked
+                        return true; //at least one checkbox checked
                     }
                 }
 
