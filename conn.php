@@ -107,11 +107,20 @@
 
         /**
          * @param mixed $SKU 
-         * @return self
+         * 
          */
         public function setSKU($SKU): self {
-            $this->SKU = $SKU;
-            return $this;
+
+            if($SKU == ''){
+                
+                $mensagem = "SKU field must not be empty";
+                header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));
+                exit();
+            ;
+            }else{
+                $this->SKU = $SKU;
+                return $this;
+            }
         }
 
         /**
@@ -126,8 +135,17 @@
          * @return self
          */
         public function setName($name): self {
-            $this->name = $name;
-            return $this;
+            if($name == ''){
+                
+                $mensagem = "Name field must not be empty";
+                header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));
+                exit();
+            ;
+            }else{
+                $this->name = $name;
+                return $this;
+            }
+            
         }
 
         /**
@@ -142,8 +160,21 @@
          * @return self
          */
         public function setPrice($price): self {
-            $this->price = $price;
-            return $this;
+            if($price == ''){
+                
+                $mensagem = "Price field must not be empty";
+                header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));
+                exit();
+            ;
+            }elseif(!filter_var($price, FILTER_VALIDATE_FLOAT)){
+                $mensagem = "Price field must be a decimal value";
+                header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));
+                exit();
+            }else {
+                $this->price = $price;
+                return $this;
+            }
+            
         }
     
         /**
@@ -158,8 +189,20 @@
          * @return self
          */
         public function setIdProduct($idProduct): self {
-            $this->idProduct = $idProduct;
-            return $this;
+            if($idProduct == ''){
+                
+                $mensagem = "idProduct field must not be empty";
+                header('Locatin: ./index.php?mensagem=' .urlencode($mensagem));
+                exit();
+            ;
+            }else if(!filter_var($idProduct, FILTER_VALIDATE_INT)){
+                $mensagem = "idProduct field must be a integer value";
+                header('Location: ./index.php?mensagem=' .urlencode($mensagem));
+                exit();
+            }else {
+                $this->idProduct = $idProduct;
+                return $this;
+            }
         }
     }
 
@@ -247,8 +290,17 @@
          * @return self
          */
         public function setSize($size): self {
-            $this->size = $size;
-            return $this;
+            if($size == ''){
+                
+                $mensagem = "Size field must not be empty";
+                header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));
+                exit();
+            ;
+            }else{
+                $this->size = $size;
+                return $this;
+            }
+            
         }
         }
 
@@ -333,8 +385,23 @@
          * @return self
          */
         public function setWeight($weight): self {
-            $this->weight = $weight;
-            return $this;
+            if($weight == ''){
+                
+                $mensagem = "weight field must not be empty";
+                header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));
+                exit();
+            ;
+            }else if(!filter_var($weight, FILTER_VALIDATE_FLOAT)){
+                $mensagem = "weight field must be a decimal value";
+                header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));
+                exit();
+            }else {
+                $this->weight = $weight;
+                return $this;
+            }
+            
+            
+            
         }
     }
     /**
@@ -434,8 +501,22 @@
          * @return self
          */
         public function setHeight($height): self {
-            $this->height = $height;
-            return $this;
+
+            if($height == ''){
+                
+                $mensagem = "Height field must not be empty";
+                header('Locatin: ./add-product.php?mensagem=' .urlencode($mensagem));
+                exit();
+            ;
+            }else if(!filter_var($height, FILTER_VALIDATE_FLOAT)){
+                $mensagem = "Height field must be a decimal value";
+                header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));
+                exit();
+            }else {
+                $this->height = $height;
+                return $this;
+            }
+            
         }
 
         /**
@@ -450,8 +531,22 @@
          * @return self
          */
         public function setLength($length): self {
-            $this->length = $length;
-            return $this;
+
+            if($length == ''){
+                
+                $mensagem = "Length field must not be empty";
+                header('Locatin: ./add-product.php?mensagem=' .urlencode($mensagem));
+                exit();
+            ;
+            }else if(!filter_var($length, FILTER_VALIDATE_FLOAT)){
+                $mensagem = "Length field must be a decimal value";
+                header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));
+                exit();
+            }else {
+                $this->length = $length;
+                return $this;
+            }
+            
         }
 
         /**
@@ -466,8 +561,22 @@
          * @return self
          */
         public function setWidth($width): self {
-            $this->width = $width;
-            return $this;
+
+            if($width == ''){
+                
+                $mensagem = "Width field must not be empty";
+                header('Locatin: ./add-product.php?mensagem=' .urlencode($mensagem));
+                exit();
+            ;
+            }else if(!filter_var($width, FILTER_VALIDATE_FLOAT)){
+                $mensagem = "Width field must be a decimal value";
+                header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));
+                exit();
+            }else {
+                $this->width = $width;
+                return $this;
+            }
+            
         }
     }
     
