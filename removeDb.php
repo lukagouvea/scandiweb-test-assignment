@@ -20,7 +20,7 @@
         }
     } else {
       $mensagem = "Select at least one option to delete";
-      header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));
+      header('Location: ./index.php?mensagem=' .urlencode($mensagem));
       exit();
     }
 
