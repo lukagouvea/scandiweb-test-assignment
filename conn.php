@@ -7,13 +7,30 @@
     $conexao = new mysqli(HOST, USUARIO, PASSWORD, DB);
 
 
+    
     /**
      * Summary of Product
      */
     abstract class Product{
+        /**
+         * Summary of idProduct
+         * @var
+         */
         private $idProduct;
+        /**
+         * Summary of SKU
+         * @var
+         */
         private $SKU;
+        /**
+         * Summary of name
+         * @var
+         */
         private $name;
+        /**
+         * Summary of price
+         * @var
+         */
         private $price;
         
 
@@ -23,11 +40,6 @@
          * Summary of setInfo
          * @param mixed $info
          * @return void
-         */
-        /**
-         * It sets the values of the object's properties to the values of the array's keys.
-         * 
-         * 
          */
         public function setInfo($info){
             if(isset($info['idProduct'])){
@@ -50,23 +62,15 @@
          * @param mixed $conexao
          * @return bool
          */
-        /**
-         * It checks if the SKU is already in the database.
-         */
         public function validSKU($conexao){
 
             /* Checking if the SKU is empty. */
             $valor = $this->getSKU();
             
-
-            
-            
             /* SQL Query to check if the SKU is already in the database */
             $sql = "SELECT * FROM tblproduct WHERE SKU = '$valor'";
             $result = mysqli_query($conexao, $sql);
 
-            
-            
             /* Checking if the SKU is already in the database. */
             if (mysqli_num_rows($result) > 0) {
                 // O valor já existe no banco de dados
@@ -78,6 +82,12 @@
         }
 
 
+        /**
+         * Summary of removeFromDbById
+         * @param mixed $id
+         * @param mixed $conexao
+         * @return void
+         */
         public function removeFromDbById($id, $conexao){
             $sql = "delete from tblproduct where idProduct = " .$id;
 
@@ -87,24 +97,7 @@
                 
             }
         }
-
-        
-
-
-
-        /**
-         * Summary of renderInfo
-         * @return void
-         */
-        /**
-         * It's a function that renders the product information in a table.
-         */
-        public function renderInfo(){
-            
-        }
-
-
-        
+  
 
 
         /**
@@ -172,22 +165,21 @@
         }
     }
 
-    /* It extends the Product class. */
+    
     /**
      * Summary of DVD
      */
     class DVD extends Product{
+        /**
+         * Summary of size
+         * @var
+         */
         private $size;
 
         /**
          * Summary of setInfo
          * @param mixed $info
          * @return void
-         */
-        /**
-         * It sets the size of the object
-         * 
-         * 
          */
         public function setInfo($info){
             parent::setInfo($info);
@@ -200,13 +192,8 @@
          * Summary of renderInfo
          * @return void
          */
-        /**
-         * The function is a method of the class "File" and it is overriding the renderInfo() method of
-         * the parent class "Item".
-         */
         public function renderInfo(){
             
-
             echo ("
                     
                 <div class='box'>
@@ -227,12 +214,7 @@
 
         /**
          * Summary of insertInfoQuery
-         * @return string
-         */
-        /**
-         * It takes the values from the object and return a SQL query to insert into DB.
-         * 
-         *
+         * @return void
          */
         public function insertInfo($conexao){
             
@@ -271,21 +253,21 @@
             return $this;
         }
         }
+
         /**
          * Summary of Book
          */
         class Book extends Product{
+            /**
+             * Summary of weight
+             * @var
+             */
             private $weight;
 
         /**
          * Summary of setInfo
          * @param mixed $info
          * @return void
-         */
-        /**
-         * The function sets the weight of the item
-         * 
-         *
          */
         public function setInfo($info){
             parent::setInfo($info);
@@ -298,10 +280,6 @@
          * Summary of renderInfo
          * @return void
          */
-        
-        /*
-        // Render information of the book 
-        */
         public function renderInfo(){
             
 
@@ -327,11 +305,6 @@
         /**
          * Summary of insertInfoQuery
          * @return void
-         */
-        /**
-         * It takes the values from the object and return a SQL query to insert into DB.
-         * 
-         * 
          */
         public function insertInfo($conexao){
             
@@ -370,8 +343,20 @@
      * Summary of Furniture
      */
     class Furniture extends Product{
+        /**
+         * Summary of height
+         * @var
+         */
         private $height;
+        /**
+         * Summary of length
+         * @var
+         */
         private $length;
+        /**
+         * Summary of width
+         * @var
+         */
         private $width;
 
 
@@ -379,12 +364,6 @@
          * Summary of setInfo
          * @param mixed $info
          * @return void
-         */
-        
-        /**
-         * The function sets the height, length, and width of the object
-         * 
-         * 
          */
         public function setInfo($info){
             parent::setInfo($info);
