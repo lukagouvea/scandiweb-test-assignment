@@ -85,6 +85,17 @@
             
         }
 
+
+        public function removeFromDbById($id, $conexao){
+            $sql = "delete from tblproduct where idProduct = " .$id;
+
+            if ($conexao->query($sql) === TRUE) {
+                echo "removed with succes";
+            } else {
+                
+            }
+        }
+
         
 
 
@@ -97,18 +108,7 @@
          * It's a function that renders the product information in a table.
          */
         public function renderInfo(){
-            echo ("
-                <div class='box'>
-                    <div id='chkbx'>
-                        <input class='delete-checkbox' 
-                        type='checkbox' 
-                        name='".$this->getIdProduct()."'>
-                    </div>
-                    ".$this->getSKU()."<br>
-                    ".$this->getName()."<br>
-                    ".number_format($this->getPrice(), 2)." $<br>"
-                             
-            );
+            
         }
 
 
@@ -221,11 +221,22 @@
          * the parent class "Item".
          */
         public function renderInfo(){
-            parent::renderInfo();
+            
 
             echo ("
+                    
+                <div class='box'>
+                    <div id='chkbx'>
+                        <input class='delete-checkbox' 
+                        type='checkbox' 
+                        name='product_id_type[]'
+                        value='".$this->getIdProduct().", DVD'>
+                    </div>
+                    ".$this->getSKU()."<br>
+                    ".$this->getName()."<br>
+                    ".number_format($this->getPrice(), 2)." $<br>
                     Size: ".$this->getSize()."MB
-                  
+
                 </div>
             ");
         }
@@ -314,9 +325,20 @@
         // Render information of the book 
         */
         public function renderInfo(){
-            parent::renderInfo();
+            
 
             echo ("
+            
+                <div class='box'>
+                    <div id='chkbx'>
+                        <input class='delete-checkbox' 
+                        type='checkbox' 
+                        name='product_id_type[]'
+                        value='".$this->getIdProduct().", Book'>
+                    </div>
+                    ".$this->getSKU()."<br>
+                    ".$this->getName()."<br>
+                    ".number_format($this->getPrice(), 2)." $<br>
                     Weight: ".$this->getWeight()." Kg
                   
                 </div>
@@ -408,9 +430,19 @@
          * @return void
          */
         public function renderInfo(){
-            parent::renderInfo();
+            
 
             echo ("
+                <div class='box'>
+                    <div id='chkbx'>
+                        <input class='delete-checkbox' 
+                        type='checkbox' 
+                        name='product_id_type[]'
+                        value='".$this->getIdProduct().", Furniture'>
+                    </div>
+                    ".$this->getSKU()."<br>
+                    ".$this->getName()."<br>
+                    ".number_format($this->getPrice(), 2)." $<br>
                     Dimension: ".$this->getHeight()."x"
                     .$this->getWidth()."x"
                     .$this->getLength()."

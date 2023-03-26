@@ -4,49 +4,26 @@
     
     
     
-    $id = array();
-    $i = 0;
 
-    $query = "SELECT idProduct FROM tblproduct ORDER BY idProduct";
+    $id_type_selected = $_POST['product_id_type'];
+    var_dump($id_type_selected);
 
-    $result = $conexao->query($query);
-
-    
-                
-    /* Checking if the query returned any results. */
-    if ($result->num_rows > 0) {
-        /* Looping through the results of the query and pushing the id of each product into the array. */
-        while ($row = $result->fetch_assoc()){
-            array_push($id, $row['idProduct']);
+    if (!empty($_POST['product_id_type'])) {
+        foreach ($_POST['product_id_type'] as $selected_option) {
+          $option_values = explode(', ', $selected_option);
+          $id = $option_values[0];
+          $type = $option_values[1];
+          $product = new $type;
+          $product->removeFromDbById($id, $conexao);
         }
-        
-    }
-    else{
-        echo "0 results";
+    } else {
+    // nenhuma opção foi selecionada
     }
 
-    /* Looping through the array of ids. */
-    while ($i <= count($id)){
-
-        /* Checking if the checkbox associated to the product exists. */
-        if(isset($_POST["$id[$i]"])){
-            
-            $sql = "delete from tblproduct where idProduct = " .$id[$i];
-
-            /* Checking if the query was successful. */
-            if ($conexao->query($sql) === TRUE) {
-                echo "removed with succes";
-            } else {
-                echo "ERROR: " . $conexao.$error;
-            }
-        }
-        $i = $i + 1;
-        
-    }
     $conexao->close();
     
     header('Location: ./index.php');
     exit();
-    
+
     
 ?>
