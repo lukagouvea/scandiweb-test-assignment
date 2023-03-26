@@ -88,7 +88,7 @@
          * @param mixed $conexao
          * @return void
          */
-        public function removeFromDbById($id, $conexao){
+        public function removeFromDbById($conexao, $id){
             $sql = "delete from tblproduct where idProduct = " .$id;
 
             if ($conexao->query($sql) === TRUE) {
