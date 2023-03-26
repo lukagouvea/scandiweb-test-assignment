@@ -36,7 +36,9 @@
             /* Checking if the query was successful. */
             if ($conexao->query($sql) === TRUE) {
                 echo "removed with succes";
-            } 
+            } else {
+                echo "ERROR: " . $conexao.$error;
+            }
         }
         $i = $i + 1;
         

@@ -18,6 +18,8 @@
         private $name;
         private $price;
         
+
+
     
         /**
          * Summary of setInfo
@@ -31,7 +33,7 @@
          */
         public function setInfo($info){
             $this->setIdProduct($info['idProduct']);
-            $this->setSKU($info['SKU']);
+            $this->setSKU($info['sku']);
             $this->setName($info['name']);
             $this->setPrice($info['price']);
         }
@@ -42,7 +44,7 @@
          * @return void
          */
         public function setInfoPOST($post){
-            $this->setSKU($post['sku']);
+            $this->setSKU($post['SKU']);
             $this->setName($post['name']);
             $this->setPrice($post['price']);
         }
@@ -56,9 +58,7 @@
 
             /* Checking if the SKU is empty. */
             $valor = $this->getSKU();
-            if ($valor == "") {
-                return false;
-            }
+            
 
             
             
