@@ -12,12 +12,6 @@
         echo "Connection failed: " . $e->getMessage();
     }
 
-
-
-
-
-
-
  
     /**
      * Summary of Product
@@ -706,8 +700,3 @@
             
         }
     }
-    
-    
-?>
-
-
