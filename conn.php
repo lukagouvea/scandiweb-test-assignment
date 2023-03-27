@@ -30,6 +30,7 @@
          * @var
          */
         private $price;
+
         
 
 
@@ -63,11 +64,11 @@
         public function validSKU($conexao){
 
             /* Checking if the SKU is empty. */
-            $valor = $this->getSKU();
+            $sku = $this->getSKU();
             
             /* SQL Query to check if the SKU is already in the database */
-            $sql = "SELECT * FROM tblproduct WHERE SKU = '$valor'";
-            $result = mysqli_query($conexao, $sql);
+            $query = "SELECT * FROM tblproduct WHERE SKU = '$sku'";
+            $result = mysqli_query($conexao, $query);
 
             /* Checking if the SKU is already in the database. */
             if (mysqli_num_rows($result) > 0) {
