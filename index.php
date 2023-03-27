@@ -66,6 +66,9 @@
             
             <?php
 
+                /* Creating a new instance of the ConcreteProduct class, then calling the selectAll
+                method from the ConcreteProduct class, which returns an array of products. Then it
+                is looping through the array and calling the renderInfo method on each product. */
                 $newproduct = new ConcreteProduct();
                     
                 $products = $newproduct->selectAll($conexao);
@@ -79,6 +82,8 @@
         </form>
         
         <script>
+            /* A function that is called when the user clicks the MASS DELETE button. It checks if at
+            least one checkbox is checked. If it is, it returns true, if not, it returns false. */
             function verifyCheckbox() {
                 var checkboxes = document.getElementsByClassName('delete-checkbox');
 
