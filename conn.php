@@ -11,6 +11,13 @@
     }catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
+
+
+
+
+
+
+
  
     /**
      * Summary of Product
@@ -225,6 +232,10 @@
 
 
 
+
+
+
+
     /**
      * Summary of ConcreteProduct
      */
@@ -253,8 +264,14 @@
 
             return $data;
         }
-
     }
+
+
+
+
+
+
+
 
 
 
@@ -368,6 +385,14 @@
         }
         }
 
+
+
+
+
+
+
+
+
         /**
          * Summary of Book
          */
@@ -480,6 +505,24 @@
             
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Summary of Furniture
      */
@@ -568,10 +611,7 @@
             } else {
                 echo "ERROR: " . $conexao;
                 
-            }
-
-            
-            
+            }          
             
         }
         
