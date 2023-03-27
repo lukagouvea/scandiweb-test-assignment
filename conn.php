@@ -71,7 +71,7 @@
 
             /* Checking if the SKU is already in the database. */
             if (mysqli_num_rows($result) > 0) {
-                // O valor já existe no banco de dados
+                // SKU is already in the database
                 return false;
             } else {
                 return true;
@@ -86,8 +86,11 @@
          * @param mixed $conexao
          * @return void
          */
-        public function removeFromDbById($conexao, $id){
-            $sql = "delete from tblproduct where idProduct = " .$id;
+        public function removeFromDbById($conexao, $ids){
+
+            $ids_str = implode(',', $ids);
+            $sql = "DELETE FROM tblproduct WHERE idProduct IN ($ids_str)";
+            
 
             if ($conexao->query($sql) === TRUE) {
                 echo "removed with succes";
@@ -271,8 +274,8 @@
                     <div id='chkbx'>
                         <input class='delete-checkbox' 
                         type='checkbox' 
-                        name='product_id_type[]'
-                        value='".$this->getIdProduct().", DVD'>
+                        name='product_id[]'
+                        value='".$this->getIdProduct()."'>
                     </div>
                     ".$this->getSKU()."<br>
                     ".$this->getName()."<br>
@@ -369,8 +372,8 @@
                     <div id='chkbx'>
                         <input class='delete-checkbox' 
                         type='checkbox' 
-                        name='product_id_type[]'
-                        value='".$this->getIdProduct().", Book'>
+                        name='product_id[]'
+                        value='".$this->getIdProduct()."'>
                     </div>
                     ".$this->getSKU()."<br>
                     ".$this->getName()."<br>
@@ -480,8 +483,8 @@
                     <div id='chkbx'>
                         <input class='delete-checkbox' 
                         type='checkbox' 
-                        name='product_id_type[]'
-                        value='".$this->getIdProduct().", Furniture'>
+                        name='product_id[]'
+                        value='".$this->getIdProduct()."'>
                     </div>
                     ".$this->getSKU()."<br>
                     ".$this->getName()."<br>
