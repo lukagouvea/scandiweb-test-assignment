@@ -4,11 +4,10 @@
     DEFINE('PASSWORD', '');
     DEFINE('DB', 'product');
     
-    $conexao = new mysqli(HOST, USUARIO, PASSWORD, DB);
 
     try{
-        $conexao = new PDO("mysql:host=".HOST.";dbname=$".DB."", USUARIO, PASSWORD);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conexao = new PDO("mysql:host=".HOST.";dbname=".DB."", USUARIO, PASSWORD);
+        $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
@@ -70,21 +69,27 @@
          */
         public function validSKU($conexao){
 
-            /* Checking if the SKU is empty. */
             $sku = $this->getSKU();
             
             /* SQL Query to check if the SKU is already in the database */
-            $query = "SELECT * FROM tblproduct WHERE SKU = '$sku'";
-            $result = mysqli_query($conexao, $query);
+            $query = "SELECT * FROM tblproduct WHERE SKU = :sku";
+            $stmt = $conexao->prepare($query);
+            $stmt->bindValue(':sku', $sku);
 
-            /* Checking if the SKU is already in the database. */
-            if (mysqli_num_rows($result) > 0) {
-                // SKU is already in the database
-                return false;
+            if($stmt->execute() === TRUE){
+                /* Checking if the SKU is already in the database. */
+                if ($stmt->rowCount() > 0) {
+                    // SKU is already in the database
+                    return false;
+                } else {
+                    return true;
+                }
             } else {
-                return true;
+                echo "ERROR: " . $conexao;
+                return false;
             }
-            
+
+                    
         }
 
 
@@ -97,18 +102,14 @@
         public function removeFromDbById($conexao, $ids){
 
             $query = "DELETE FROM tblproduct WHERE idProduct IN 
-                (".implode(',', array_fill(0, count($ids), '?')).")";
-            
+              (".implode(',', $ids).")";
             $stmt = $conexao->prepare($query);
-
-            $stmt->bind_param(str_repeat('i', count($ids)), ...$ids);
-
+            
             if ($stmt->execute() === TRUE) {
                 header('Location: ./index.php');
                 exit();
             } else {
                 echo "ERROR: " . $conexao;
-                
             }
 
             
@@ -236,16 +237,18 @@
          */
         public function selectAll($conexao) {
             $sql = "SELECT * FROM tblproduct ORDER BY idProduct";
+    
+            $stmt = $conexao->prepare($sql);
+            $stmt->execute();
             
-            $result = $conexao->query($sql);
 
             $data = array();
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    $obj = new $row["type"];
-                    $obj->setInfo($row);
-                    $data[] = $obj;
-                }
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                
+                $obj = new $row['type'];
+                $obj->setInfo($row);
+                $data[] = $obj;
+
             }
 
             return $data;
@@ -313,6 +316,8 @@
             $price = $this->getPrice();
             $size = $this->getSize();
 
+            $values = array($sku, $name, $price, $size);
+
 
 
             $query = "INSERT INTO tblproduct (SKU, name, price, size, type) VALUES 
@@ -320,9 +325,9 @@
 
             $stmt = $conexao->prepare($query);
 
-            $stmt->bind_param('ssdd', $sku, $name, $price, $size);
 
-            if ($stmt->execute() === TRUE) {
+
+            if ($stmt->execute($values) === TRUE) {
                 header('Location: ./index.php');
                 exit();
             } else {
@@ -424,16 +429,15 @@
             $price = $this->getPrice();
             $weight = $this->getWeight();
 
-
+            $values = array($sku, $name, $price, $weight);
 
             $query = "INSERT INTO tblproduct (SKU, name, price, weight, type) VALUES 
             (?, ?, ?, ?, 'book')";
 
             $stmt = $conexao->prepare($query);
 
-            $stmt->bind_param('ssdd', $sku, $name, $price, $weight);
 
-            if ($stmt->execute() === TRUE) {
+            if ($stmt->execute($values) === TRUE) {
                 header('Location: ./index.php');
                 exit();
             } else {
@@ -549,6 +553,8 @@
             $length = $this->getLength();
             $width = $this->getWidth();
 
+            $values = array($sku, $name, $price, $height, $length, $width);
+
 
 
             $query = "INSERT INTO tblproduct (SKU, name, price, height, width, length, type) VALUES 
@@ -556,15 +562,15 @@
 
             $stmt = $conexao->prepare($query);
 
-            $stmt->bind_param('ssdddd', $sku, $name, $price, $height, $width, $length);
-
-            if ($stmt->execute() === TRUE) {
+            if ($stmt->execute($values) === TRUE) {
                 header('Location: ./index.php');
                 exit();
             } else {
                 echo "ERROR: " . $conexao;
                 
             }
+
+            
             
             
         }

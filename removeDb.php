@@ -16,7 +16,7 @@
     }
 
 
-    $conexao->close();
+    $conexao = null;
     
     header('Location: ./index.php');
     exit();

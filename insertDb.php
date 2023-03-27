@@ -19,7 +19,7 @@
         
     }
     
-    $conexao->close();
+    $conexao = null;
     
 
 
