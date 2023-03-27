@@ -5,6 +5,13 @@
     DEFINE('DB', 'product');
     
     $conexao = new mysqli(HOST, USUARIO, PASSWORD, DB);
+
+    try{
+        $conexao = new PDO("mysql:host=".HOST.";dbname=$".DB."", USUARIO, PASSWORD);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }catch(PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
  
     /**
      * Summary of Product

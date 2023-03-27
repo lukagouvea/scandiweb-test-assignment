@@ -31,14 +31,15 @@
         .delete-checkbox{
             height: 15px;
             width: 15px; 
-            
-            
+            float:left;
+            margin: 5px 5px 5px 5px;
         }
         
         #chkbx{
             position: relative;
             float: left;
             width: 25px;
+            height: 25px;
             left:-20px;
             top: -20px;
         }
