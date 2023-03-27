@@ -95,7 +95,7 @@
             if ($conexao->query($sql) === TRUE) {
                 echo "removed with succes";
             } else {
-                
+                echo "ERROR";
             }
         }
 

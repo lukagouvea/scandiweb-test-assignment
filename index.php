@@ -66,9 +66,9 @@
             
             <?php
 
-                $product = new ConcreteProduct();
+                $newproduct = new ConcreteProduct();
                     
-                $products = $product->selectAll($conexao);
+                $products = $newproduct->selectAll($conexao);
                 
                 foreach ($products as $product){
                     $product->renderInfo();
