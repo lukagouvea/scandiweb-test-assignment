@@ -88,15 +88,22 @@
          */
         public function removeFromDbById($conexao, $ids){
 
-            $ids_str = implode(',', $ids);
-            $sql = "DELETE FROM tblproduct WHERE idProduct IN ($ids_str)";
+            $query = "DELETE FROM tblproduct WHERE idProduct IN 
+                (".implode(',', array_fill(0, count($ids), '?')).")";
             
+            $stmt = $conexao->prepare($query);
 
-            if ($conexao->query($sql) === TRUE) {
-                echo "removed with succes";
+            $stmt->bind_param(str_repeat('i', count($ids)), ...$ids);
+
+            if ($stmt->execute() === TRUE) {
+                header('Location: ./index.php');
+                exit();
             } else {
-                echo "ERROR";
+                echo "ERROR: " . $conexao;
+                
             }
+
+            
         }
 
         /**
@@ -221,6 +228,7 @@
          */
         public function selectAll($conexao) {
             $sql = "SELECT * FROM tblproduct ORDER BY idProduct";
+            
             $result = $conexao->query($sql);
 
             $data = array();
@@ -291,12 +299,22 @@
          * @return void
          */
         public function insertInfo($conexao){
-            
-            $query = "INSERT INTO tblproduct (SKU, name, price, size, type) VALUES 
-            ('". $this->getSKU()."', '".$this->getName()."', '"
-                .$this->getPrice()."', '".$this->getSize()."', 'dvd')";
 
-            if ($conexao->query($query) === TRUE) {
+            $sku = $this->getSKU();
+            $name = $this->getName();
+            $price = $this->getPrice();
+            $size = $this->getSize();
+
+
+
+            $query = "INSERT INTO tblproduct (SKU, name, price, size, type) VALUES 
+            (?, ?, ?, ?, 'dvd')";
+
+            $stmt = $conexao->prepare($query);
+
+            $stmt->bind_param('ssdd', $sku, $name, $price, $size);
+
+            if ($stmt->execute() === TRUE) {
                 header('Location: ./index.php');
                 exit();
             } else {
@@ -390,18 +408,31 @@
          * @return void
          */
         public function insertInfo($conexao){
-            
+
+
+
+            $sku = $this->getSKU();
+            $name = $this->getName();
+            $price = $this->getPrice();
+            $weight = $this->getWeight();
+
+
+
             $query = "INSERT INTO tblproduct (SKU, name, price, weight, type) VALUES 
-            ('".$this->getSKU()."', '".$this->getName()."', '"
-            .$this->getPrice()."', '".$this->getWeight()."', 'book')";
-            
-            if ($conexao->query($query) === TRUE) {
+            (?, ?, ?, ?, 'book')";
+
+            $stmt = $conexao->prepare($query);
+
+            $stmt->bind_param('ssdd', $sku, $name, $price, $weight);
+
+            if ($stmt->execute() === TRUE) {
                 header('Location: ./index.php');
                 exit();
             } else {
                 echo "ERROR: " . $conexao;
                 
             }
+            
             
             
         }
@@ -502,22 +533,31 @@
          * @return void
          */
         public function insertInfo($conexao){
-            
-            $query = "INSERT INTO tblproduct 
-            (SKU, name, price, height, width, length, type) VALUES 
-            ('".$this->getSKU()."', '".$this->getName()."', '"
-            .$this->getPrice()."', '".$this->getHeight()."', '"
-            .$this->getWidth()."', '".$this->getLength()."', 'furniture')";
 
-            if ($conexao->query($query) === TRUE) {
+            $sku = $this->getSKU();
+            $name = $this->getName();
+            $price = $this->getPrice();
+            $height = $this->getHeight();
+            $length = $this->getLength();
+            $width = $this->getWidth();
+
+
+
+            $query = "INSERT INTO tblproduct (SKU, name, price, height, width, length, type) VALUES 
+            (?, ?, ?, ?, ?, ?, 'furniture')";
+
+            $stmt = $conexao->prepare($query);
+
+            $stmt->bind_param('ssdddd', $sku, $name, $price, $height, $width, $length);
+
+            if ($stmt->execute() === TRUE) {
                 header('Location: ./index.php');
                 exit();
             } else {
                 echo "ERROR: " . $conexao;
                 
             }
-
-
+            
             
         }
         
