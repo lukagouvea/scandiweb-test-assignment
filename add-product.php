@@ -56,6 +56,14 @@ to change the form to the desired type -->
 
     }
 
+    /* Creating an object that has the keys dvd, book, and furniture. The values of the
+    keys are the classes DVD, Book, and Furniture. */
+    const productClasses = {
+        dvd: DVD,
+        book: Book,
+        furniture: Furniture
+    };
+
 
 </script>
 
@@ -177,22 +185,10 @@ to change the form to the desired type -->
             user changes the value of the dropdown menu. -->
             <script>
 
-                
-                
-                
-
                 /* This is an event listener that is listening for the change event. When the change
                 event is triggered, the function changeForm() is called. */
                 document.getElementById("productType").
                 addEventListener("change", changeForm);
-
-                /* Creating an object that has the keys dvd, book, and furniture. The values of the
-                keys are the classes DVD, Book, and Furniture. */
-                const productClasses = {
-                    dvd: DVD,
-                    book: Book,
-                    furniture: Furniture
-                };
 
                 
                 /**
