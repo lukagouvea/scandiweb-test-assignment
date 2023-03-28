@@ -103,7 +103,7 @@
 	</main>
 	
 	<footer>
-		<p>Scadiweb Test Assignment</p>
+		<p>Scandiweb Test Assignment</p>
 	</footer>
 </body>
 </html>
