@@ -19,7 +19,6 @@ header {
 }
 
 label, input {
-
     display: inline-block;
 }
 
@@ -29,9 +28,7 @@ button {
     border: 1px solid;
     padding: 10px;
     margin-right: 10px;
-    cursor: pointer;
-    
-    
+    cursor: pointer;   
 }
 
 button:hover {
@@ -41,7 +38,6 @@ button:hover {
 main {
     margin-top: 40px;
     margin-bottom: 40px;
-    
     padding: 50px;
 }
 

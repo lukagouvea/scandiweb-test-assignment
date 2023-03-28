@@ -53,12 +53,11 @@
             if(isset($info['idProduct'])){
                 $this->setIdProduct($info['idProduct']);
             }
-            /* Checking if the SKU is set. */
+
+            /* Checking if the SKU is set as SKU or sku. */
             if(isset($info['SKU'])){
                 $this->setSKU($info['SKU']);
-            } 
-            /* Checking if the sku is set. */
-            else if(isset($info['sku'])){
+            }else if(isset($info['sku'])){
                 $this->setSKU($info['sku']);
             }
 
@@ -237,6 +236,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
     /**
      * Summary of ConcreteProduct
      */
@@ -277,6 +285,12 @@
 
 
     
+
+
+
+
+
+
     /**
      * Summary of DVD
      */
@@ -329,12 +343,9 @@
          */
         public function insertInfo($conexao){
 
-            $sku = $this->getSKU();
-            $name = $this->getName();
-            $price = $this->getPrice();
-            $size = $this->getSize();
 
-            $values = array($sku, $name, $price, $size);
+            $values = array($this->getSKU(), $this->getName(), $this->getPrice(), 
+            $this->getSize());
 
 
 
@@ -385,6 +396,15 @@
             
         }
         }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -449,13 +469,8 @@
         public function insertInfo($conexao){
 
 
-
-            $sku = $this->getSKU();
-            $name = $this->getName();
-            $price = $this->getPrice();
-            $weight = $this->getWeight();
-
-            $values = array($sku, $name, $price, $weight);
+            $values = array($this->getSKU(), $this->getName(), $this->getPrice(),
+            $this->getWeight());
 
             $query = "INSERT INTO tblproduct (SKU, name, price, weight, type) VALUES 
             (?, ?, ?, ?, 'book')";
@@ -590,14 +605,9 @@
          */
         public function insertInfo($conexao){
 
-            $sku = $this->getSKU();
-            $name = $this->getName();
-            $price = $this->getPrice();
-            $height = $this->getHeight();
-            $length = $this->getLength();
-            $width = $this->getWidth();
 
-            $values = array($sku, $name, $price, $height, $length, $width);
+            $values = array($this->getSKU(), $this->getName(), $this->getPrice(), 
+            $this->getHeight(), $this->getLength(), $this->getWidth());
 
 
 
@@ -707,3 +717,5 @@
             
         }
     }
+
+?>

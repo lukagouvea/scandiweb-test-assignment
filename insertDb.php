@@ -13,6 +13,7 @@
         $newproduct->insertInfo($conexao);
         
     }else{
+        /* Redirecting the user to the add-product.php page with a message that the SKU must be unique. */
         $conexao = null;
         $mensagem = "SKU must be unique";
         header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));

@@ -62,11 +62,14 @@
             
             <label for="sku">SKU:</label>
             <input type="text" id="sku" name="sku" required><br><br>
+
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required><br><br>
+
             <label for="price">Price($):</label>
             <input type="text" id="price" name="price" 
                 pattern="\d+(\.|,)?\d{0,2}" required><br><br>
+
             <label>Type Switcher: </label>
             <select id="productType" name="productType">
                 <option value="dvd">DVD</option>
@@ -81,7 +84,7 @@
                 <input type="text" id="size" name="size" 
                     pattern="\d+(\.|,)?\d{0,2}" required><br><br>
 
-                    <p style='text-align: center;'>Please, provide size in MB</p>
+                <p style='text-align: center;'>Please, provide size in MB</p>
                 
             </div>
 
@@ -110,7 +113,7 @@
                 <input type="text" id="length" name="length"
                     pattern="\d+(\.|,)?\d{0,2}"><br><br>
 
-                    <p style='text-align: center;'>Please, provide dimensions in cm</p>
+                <p style='text-align: center;'>Please, provide dimensions in cm</p>
                 
 
             </div>
@@ -123,6 +126,7 @@
              *The function then checks the value of the dropdown menu and displays the appropriate form.
              */-->
             <script type="text/javascript">
+
                 document.getElementById("productType").
                 addEventListener("change", changeForm);
 
@@ -179,9 +183,6 @@
 
 
         </form>
-
-
-
 
 	</main>
 	
