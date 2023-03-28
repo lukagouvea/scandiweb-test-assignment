@@ -48,12 +48,17 @@
          * @return void
          */
         public function setInfo($info){
+            
+            /* Checking if the idProduct is set. */
             if(isset($info['idProduct'])){
                 $this->setIdProduct($info['idProduct']);
             }
+            /* Checking if the SKU is set. */
             if(isset($info['SKU'])){
                 $this->setSKU($info['SKU']);
-            } else if(isset($info['sku'])){
+            } 
+            /* Checking if the sku is set. */
+            else if(isset($info['sku'])){
                 $this->setSKU($info['sku']);
             }
 
@@ -102,10 +107,12 @@
          */
         public function removeFromDbById($conexao, $ids){
 
+            /* Deleting the selected ids from the database. */
             $query = "DELETE FROM tblproduct WHERE idProduct IN 
               (".implode(',', $ids).")";
             $stmt = $conexao->prepare($query);
             
+            /* Inserting the data into the database. */
             if ($stmt->execute() === TRUE) {
                 header('Location: ./index.php');
                 exit();

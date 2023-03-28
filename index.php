@@ -78,6 +78,7 @@
                     $product->renderInfo();
                 }
                 
+                $conexao = null;
 
             ?>
         </form>

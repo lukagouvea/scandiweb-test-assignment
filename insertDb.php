@@ -12,7 +12,7 @@
         $newproduct->insertInfo($conexao);
         
     }else{
-        
+        $conexao = null;
         $mensagem = "SKU must be unique";
         header('Location: ./add-product.php?mensagem=' .urlencode($mensagem));
         exit();
