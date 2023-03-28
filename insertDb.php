@@ -9,6 +9,7 @@
     database. */
     if($newproduct->validSKU($conexao)){
                
+        /** Inserting info into DB */
         $newproduct->insertInfo($conexao);
         
     }else{
