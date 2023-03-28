@@ -17,12 +17,13 @@
         }
         input{
             position: absolute;
-            left: 150px;
+            left: 170px;
         }
         select{
             position: relative;
-            left: 76px;
+            left: 86px;
             width: 110px;
+            height: 21px;
             text-align: center;
         }
         #dvdform, #bookform, #furnitureform{
@@ -33,10 +34,7 @@
             border-radius: 5px;
 
         }
-        #size, #weight, #height, #width, #length{
-            
-            left: 150px;
-        }
+        
     </style>
     
 </head>
@@ -121,25 +119,13 @@
 
 
 
-            <!--
-             * The function is called when the user changes the value of the dropdown menu. 
-             *The function then checks the value of the dropdown menu and displays the appropriate form.
-             */-->
-            <script type="text/javascript">
+            
+            <!-- This script is responsible for changing the form that is displayed to the user when the
+            user changes the value of the dropdown menu. -->
+            <script>
 
-                document.getElementById("productType").
-                addEventListener("change", changeForm);
-
-                
-
-
-                function changeForm() {
-                    var x = document.getElementById("productType").value;
-                    /* This is the code that is executed when the user selects the DVD product type.
-                    The code displays the DVD form and sets the size input field to required. The
-                    code also hides the book and furniture forms and sets the weight, height, width,
-                    and length input fields to not required. */
-                    if(x=="dvd"){
+                class DVD {
+                    setForm(document){
                         document.getElementById("dvdform").style.display="block"; 
                         document.getElementById("size").required = true;
 
@@ -148,11 +134,13 @@
 
                         document.getElementById("furnitureform").style.display="none";
                         document.getElementById("height").required = false;
-                        document.getElementById("width").required = false;
                         document.getElementById("length").required = false;
+                        document.getElementById("width").required = false;
+                    }
+                }
 
-                    
-                    }else if(x=="book"){
+                class Book{
+                    setForm(document){
                         document.getElementById("dvdform").style.display="none";
                         document.getElementById("size").required = false;
 
@@ -163,8 +151,11 @@
                         document.getElementById("height").required = false;
                         document.getElementById("width").required = false;
                         document.getElementById("length").required = false; 
+                    }
+                }
 
-                    }else if(x=="furniture"){
+                class Furniture{
+                    setForm(document){
                         document.getElementById("dvdform").style.display="none"; 
                         document.getElementById("size").required = false;
 
@@ -175,8 +166,38 @@
                         document.getElementById("height").required = true;
                         document.getElementById("width").required = true;
                         document.getElementById("length").required = true; 
-
                     }
+
+                }
+                
+                
+
+                /* This is an event listener that is listening for the change event. When the change
+                event is triggered, the function changeForm() is called. */
+                document.getElementById("productType").
+                addEventListener("change", changeForm);
+
+                /* Creating an object that has the keys dvd, book, and furniture. The values of the
+                keys are the classes DVD, Book, and Furniture. */
+                const productClasses = {
+                    dvd: DVD,
+                    book: Book,
+                    furniture: Furniture
+                };
+
+                
+                /**
+                 * When the user changes the value of the dropdown, the value of the dropdown is used
+                 * to create a new instance of the class that matches the value of the dropdown, and
+                 * then the setForm function of that class is called.
+                 */
+                function changeForm() {
+
+                    var x = document.getElementById("productType").value;
+
+                    const product = new productClasses[x];
+                    product.setForm(document);
+                    
                 }
             </script>
 

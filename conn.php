@@ -58,12 +58,6 @@
             }
 
             /* Checking if the SKU is set as SKU or sku. */
-            //if(isset($info['SKU'])){
-            //    $this->setSKU($info['SKU']);
-            //}else if(isset($info['sku'])){
-            //    $this->setSKU($info['sku']);
-            //}
-
             $this->setSKU($info['SKU'] ?? $info['sku']);
 
             $this->setName($info['name']);
