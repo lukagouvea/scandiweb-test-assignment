@@ -6,6 +6,59 @@
     }
 ?> 
 
+<!-- Setting classes that correspond to each type of product then use the methodo setForm
+to change the form to the desired type -->
+<script>
+
+    class DVD {
+        setForm(document){
+            document.getElementById("dvdform").style.display="block"; 
+            document.getElementById("size").required = true;
+
+            document.getElementById("bookform").style.display="none";
+            document.getElementById("weight").required = false;
+
+            document.getElementById("furnitureform").style.display="none";
+            document.getElementById("height").required = false;
+            document.getElementById("length").required = false;
+            document.getElementById("width").required = false;
+        }
+    }
+
+    class Book{
+        setForm(document){
+            document.getElementById("dvdform").style.display="none";
+            document.getElementById("size").required = false;
+
+            document.getElementById("bookform").style.display="block";
+            document.getElementById("weight").required = true;
+
+            document.getElementById("furnitureform").style.display="none";
+            document.getElementById("height").required = false;
+            document.getElementById("width").required = false;
+            document.getElementById("length").required = false; 
+        }
+    }
+
+    class Furniture{
+        setForm(document){
+            document.getElementById("dvdform").style.display="none"; 
+            document.getElementById("size").required = false;
+
+            document.getElementById("bookform").style.display="none";
+            document.getElementById("weight").required = false;
+
+            document.getElementById("furnitureform").style.display="block"; 
+            document.getElementById("height").required = true;
+            document.getElementById("width").required = true;
+            document.getElementById("length").required = true; 
+        }
+
+    }
+
+
+</script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,51 +177,7 @@
             user changes the value of the dropdown menu. -->
             <script>
 
-                class DVD {
-                    setForm(document){
-                        document.getElementById("dvdform").style.display="block"; 
-                        document.getElementById("size").required = true;
-
-                        document.getElementById("bookform").style.display="none";
-                        document.getElementById("weight").required = false;
-
-                        document.getElementById("furnitureform").style.display="none";
-                        document.getElementById("height").required = false;
-                        document.getElementById("length").required = false;
-                        document.getElementById("width").required = false;
-                    }
-                }
-
-                class Book{
-                    setForm(document){
-                        document.getElementById("dvdform").style.display="none";
-                        document.getElementById("size").required = false;
-
-                        document.getElementById("bookform").style.display="block";
-                        document.getElementById("weight").required = true;
-
-                        document.getElementById("furnitureform").style.display="none";
-                        document.getElementById("height").required = false;
-                        document.getElementById("width").required = false;
-                        document.getElementById("length").required = false; 
-                    }
-                }
-
-                class Furniture{
-                    setForm(document){
-                        document.getElementById("dvdform").style.display="none"; 
-                        document.getElementById("size").required = false;
-
-                        document.getElementById("bookform").style.display="none";
-                        document.getElementById("weight").required = false;
-
-                        document.getElementById("furnitureform").style.display="block"; 
-                        document.getElementById("height").required = true;
-                        document.getElementById("width").required = true;
-                        document.getElementById("length").required = true; 
-                    }
-
-                }
+                
                 
                 
 
