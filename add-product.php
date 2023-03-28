@@ -120,7 +120,7 @@ to change the form to the desired type -->
         <form id="product_form" action="insertDb.php" method="POST">
             
             <label for="sku">SKU:</label>
-            <input type="text" id="sku" name="sku" required><br><br>
+            <input type="text" id="sku" name="SKU" required><br><br>
 
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required><br><br>

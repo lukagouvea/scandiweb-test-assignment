@@ -57,8 +57,7 @@
                 $this->setIdProduct($info['idProduct']);
             }
 
-            /* Checking if the SKU is set as SKU or sku. */
-            $this->setSKU($info['SKU'] ?? $info['sku']);
+            $this->setSKU($info['SKU']);
 
             $this->setName($info['name']);
             $this->setPrice($info['price']);
