@@ -198,9 +198,9 @@ to change the form to the desired type -->
                  */
                 function changeForm() {
 
-                    var x = document.getElementById("productType").value;
+                    var type = document.getElementById("productType").value;
 
-                    const product = new productClasses[x];
+                    const product = new productClasses[type];
                     product.setForm(document);
                     
                 }
