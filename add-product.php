@@ -11,7 +11,7 @@ to change the form to the desired type -->
 <script>
 
     class DVD {
-        setForm(document){
+        setForm(){
             document.getElementById("dvdform").style.display="block"; 
             document.getElementById("size").required = true;
 
@@ -26,7 +26,7 @@ to change the form to the desired type -->
     }
 
     class Book{
-        setForm(document){
+        setForm(){
             document.getElementById("dvdform").style.display="none";
             document.getElementById("size").required = false;
 
@@ -41,7 +41,7 @@ to change the form to the desired type -->
     }
 
     class Furniture{
-        setForm(document){
+        setForm(){
             document.getElementById("dvdform").style.display="none"; 
             document.getElementById("size").required = false;
 
@@ -198,10 +198,10 @@ to change the form to the desired type -->
                  */
                 function changeForm() {
 
-                    var type = document.getElementById("productType").value;
+                    let type = document.getElementById("productType").value;
 
-                    const product = new productClasses[type];
-                    product.setForm(document);
+                    let product = new productClasses[type];
+                    product.setForm();
                     
                 }
             </script>
